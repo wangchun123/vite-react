@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { notification } from "antd";
 
 import "./index.css";
 
 const Login = () => {
+  const [api, contextHolder] = notification.useNotification();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -14,11 +16,20 @@ const Login = () => {
     // 简单校验
     if (!username || !password) {
       setError("请输入用户名和密码");
+      openNotification("topRight");
       return;
     }
     setError("");
     // 登录成功后跳转到首页
     navigate("/home");
+  };
+
+  const openNotification = (placement) => {
+    api.info({
+      message: `用户名和密码`,
+      description: <>随便🫤输入即可</>,
+      placement,
+    });
   };
 
   return (
@@ -51,6 +62,7 @@ const Login = () => {
           </button>
         </form>
       </div>
+      {contextHolder}
     </div>
   );
 };
