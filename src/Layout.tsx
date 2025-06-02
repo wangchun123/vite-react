@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import LeftLayout from "./compents/LeftLayout";
 import TopLayout from "./compents/topLayout";
-import "./Layout.css";
+import "./Layout.less";
 
 function Layout() {
   return (

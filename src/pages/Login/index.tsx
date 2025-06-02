@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { notification } from "antd";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/store";
-import "./index.css";
+import "./index.less";
 
 const Login = () => {
   const [api, contextHolder] = notification.useNotification();
