@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { notification } from "antd";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/store";
+import request from "../../util/request";
 import "./index.less";
 
 const Login = () => {
@@ -10,6 +11,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,12 +23,21 @@ const Login = () => {
       return;
     }
     setError("");
+    setLoading(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      dispatch(login(username));
-      navigate("/home");
-    } catch (err) {
-      setError("登录失败");
+      // 使用可成功返回的测试接口
+      const res = await request.get("https://jsonplaceholder.typicode.com/users/1");
+      // res 实际为用户对象
+      if (res && (res as any).id) {
+        dispatch(login((res as any).username || username));
+        navigate("/home");
+      } else {
+        setError("登录失败");
+      }
+    } catch (err: any) {
+      setError(err?.message || "请求异常");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -63,8 +74,8 @@ const Login = () => {
           {error && (
             <div style={{ color: "red", marginBottom: 12 }}>{error}</div>
           )}
-          <button type="submit" style={{ width: "100%", padding: 10 }}>
-            登录
+          <button type="submit" style={{ width: "100%", padding: 10 }} disabled={loading}>
+            {loading ? "登录中..." : "登录"}
           </button>
         </form>
       </div>
