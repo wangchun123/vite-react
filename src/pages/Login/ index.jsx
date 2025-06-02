@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { notification } from "antd";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/store";
 
 import "./index.css";
 
@@ -10,8 +12,9 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // 简单校验
     if (!username || !password) {
@@ -20,8 +23,15 @@ const Login = () => {
       return;
     }
     setError("");
-    // 登录成功后跳转到首页
-    navigate("/home");
+    // 模拟接口请求
+    try {
+      // 这里可替换为真实接口请求
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      dispatch(login(username));
+      navigate("/home");
+    } catch (err) {
+      setError("登录失败");
+    }
   };
 
   const openNotification = (placement) => {
