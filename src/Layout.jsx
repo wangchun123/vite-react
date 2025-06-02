@@ -10,15 +10,13 @@ function Layout() {
       <div className="leftLayout">
         <LeftLayout></LeftLayout>
       </div>
-      <div style={{display:''}}>
-
-      <div className="topLayout">
-        <TopLayout></TopLayout>
-      </div>
-      <div>
-       
-        <Outlet/>
-      </div>
+      <div style={{ display: "" }}>
+        <div className="topLayout">
+          <TopLayout></TopLayout>
+        </div>
+        <div className="content">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

@@ -3,27 +3,27 @@ import React from "react";
 import { useRoutes } from "react-router-dom";
 
 import Layout from "../Layout";
-import TopLayout from "../compents/topLayout/index";
 
 const Text = () => {
   return <>测试嵌套路由</>;
 };
 
+/**配置路由 */
 const router = [
   {
     path: "",
-    element: <Layout></Layout>,
+    element: <Layout />,
     children: [
       {
         path: "/home",
-        element: <Text></Text>,
+        element: <Text />,
       },
     ],
   },
-  {
-    path: "/some",
-    element: <TopLayout></TopLayout>,
-  },
+  // {
+  //   path: "/some",
+  //   element: <TopLayout />,
+  // },
 ];
 
 const PageRouter = () => {

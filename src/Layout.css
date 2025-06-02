@@ -12,3 +12,6 @@
 .topLayout {
   width: calc(100vw - 255px);
 }
+.content{
+  padding: 60px;
+}
