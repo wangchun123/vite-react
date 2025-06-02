@@ -1,0 +1,43 @@
+.home-container {
+  min-height: calc(100vh - 66px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e0e7ff 0%, #f5f7fa 100%);
+}
+
+.home-card {
+  min-width: 420px;
+  max-width: 520px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(24, 144, 255, 0.10), 0 1.5px 6px rgba(0,0,0,0.04);
+  border-radius: 18px;
+  background: #fff;
+  padding: 48px 32px 36px 32px;
+  border: none;
+}
+
+.home-card h1 {
+  color: #1890ff;
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  letter-spacing: 2px;
+}
+
+.home-card p {
+  color: #555;
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+  line-height: 1.8;
+}
+
+.home-card::after {
+  content: '';
+  display: block;
+  margin: 32px auto 0 auto;
+  width: 60px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #1890ff 0%, #91caff 100%);
+}

@@ -3,6 +3,7 @@ import { useRoutes } from "react-router-dom";
 import Login from "../pages/Login/index";
 import Layout from "../Layout";
 import TestRouter from "../pages/TestRouter";
+import Home from "../pages/Home";
 
 const Text = () => {
   return <>测试嵌套路由</>;
@@ -18,7 +19,11 @@ const router = [
     element: <Layout />,
     children: [
       {
-        path: "/home/testNestedRoute",
+        path: "",
+        element: <Home />,
+      },
+      {
+        path: "testNestedRoute",
         element: <TestRouter />,
       },
     ],
