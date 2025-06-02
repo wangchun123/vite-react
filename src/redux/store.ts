@@ -1,11 +1,18 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
+interface UserState {
+  name: string;
+  isLogin: boolean;
+}
+
+const initialState: UserState = {
+  name: "qwer",
+  isLogin: false,
+};
+
 const userSlice = createSlice({
   name: "user",
-  initialState: {
-    name: "qwer",
-    isLogin: false,
-  },
+  initialState,
   reducers: {
     login: (state, action) => {
       state.isLogin = true;

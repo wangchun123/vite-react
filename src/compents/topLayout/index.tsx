@@ -9,7 +9,7 @@ import { Menu } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const items = [
+const getItems = (name: string) => [
   {
     label: "Navigation One",
     key: "mail",
@@ -54,7 +54,7 @@ const items = [
   },
   {
     key: "user",
-    label: `${name}`,
+    label: name,
     icon: <UserOutlined />,
     style: { float: "right", marginLeft: "auto" },
     children: [
@@ -69,45 +69,24 @@ const items = [
 
 const App = () => {
   const [current, setCurrent] = useState("mail");
-  const [newItems, setNewItems] = useState(items);
   const navigate = useNavigate();
-  const name = useSelector((state) => {
-    console.log('state',state)
-    return state.user.name;
-  });
+  const name = useSelector((state: any) => state.user.name);
 
-  const onClick = (e) => {
-    console.log("click ", e);
+  const onClick = (e: any) => {
     setCurrent(e.key);
     if (e.key === "getout") {
-      console.log("登出操作");
-      // 清除登录状态（如有）
-      // 跳转到登录页
       navigate("/");
     }
   };
 
-
-  useEffect(() => {
-    // 更新用户信息
-    const updatedItems = items.map((item) => {
-      if (item.key === "user") {
-        return {
-          ...item,
-          label: `${name}`,
-        };
-      }
-      return item;
-    });
-    setNewItems(updatedItems);
-  }, [name]);
+  const items = getItems(name);
 
   return (
     <Menu
       onClick={onClick}
       selectedKeys={[current]}
       mode="horizontal"
-      items={newItems}
+      items={items}
     />
   );
 };

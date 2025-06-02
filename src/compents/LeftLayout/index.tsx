@@ -8,10 +8,9 @@ import {
   MenuUnfoldOutlined,
   PieChartOutlined,
 } from "@ant-design/icons";
-
 import { Button, Menu } from "antd";
-
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const items = [
   { key: "1", icon: <PieChartOutlined />, label: "home" },
@@ -50,23 +49,19 @@ const items = [
 const App = () => {
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
+  const username = useSelector((state: any) => state.user.name);
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
   };
 
-  const onMenuClick = ({ key }) => {
-    // 示例：根据 key 跳转不同路由
+  const onMenuClick = ({ key }: { key: string }) => {
     if (key === "1") navigate("/home");
     else if (key === "2") navigate("/home/testNestedRoute");
-    // 你可以根据实际 key 继续添加更多跳转
   };
 
   return (
     <div style={{ width: 256 }}>
-      {/* <Button type="primary" onClick={toggleCollapsed} style={{ marginBottom: 16 }}>
-        {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-      </Button> */}
       <Menu
         defaultSelectedKeys={["1"]}
         defaultOpenKeys={["sub1", "sub2", "sub3"]}

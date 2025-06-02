@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import LeftLayout from "./compents/LeftLayout/index";
-import TopLayout from "./compents/topLayout/index";
+import LeftLayout from "./compents/LeftLayout";
+import TopLayout from "./compents/topLayout";
 import "./Layout.css";
 
 function Layout() {
   return (
     <div className="layout">
       <div className="leftLayout">
-        <LeftLayout></LeftLayout>
+        <LeftLayout />
       </div>
       <div style={{ display: "" }}>
         <div className="topLayout">
-          <TopLayout></TopLayout>
+          <TopLayout />
         </div>
         <div className="content">
           <Outlet />

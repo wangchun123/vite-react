@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { notification } from "antd";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/store";
-
 import "./index.css";
 
 const Login = () => {
@@ -14,18 +13,15 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // 简单校验
     if (!username || !password) {
       setError("请输入用户名和密码");
       openNotification("topRight");
       return;
     }
     setError("");
-    // 模拟接口请求
     try {
-      // 这里可替换为真实接口请求
       await new Promise((resolve) => setTimeout(resolve, 500));
       dispatch(login(username));
       navigate("/home");
@@ -34,7 +30,7 @@ const Login = () => {
     }
   };
 
-  const openNotification = (placement) => {
+  const openNotification = (placement: any) => {
     api.info({
       message: `用户名和密码`,
       description: <>随便🫤输入即可</>,

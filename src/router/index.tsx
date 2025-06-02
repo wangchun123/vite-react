@@ -1,8 +1,6 @@
 import React from "react";
-
 import { useRoutes } from "react-router-dom";
-
-import Login from "../pages/Login/ index";
+import Login from "../pages/Login/index";
 import Layout from "../Layout";
 import TestRouter from "../pages/TestRouter";
 
@@ -10,7 +8,6 @@ const Text = () => {
   return <>测试嵌套路由</>;
 };
 
-/**配置路由 */
 const router = [
   {
     path: "/",
@@ -26,10 +23,6 @@ const router = [
       },
     ],
   },
-  // {
-  //   path: "/some",
-  //   element: <TopLayout />,
-  // },
 ];
 
 const PageRouter = () => {
