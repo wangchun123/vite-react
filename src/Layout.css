@@ -1,0 +1,10 @@
+.layout{
+
+}
+
+.leftLayout{
+    width: 255px;
+    height: 100vh;
+    background-color: burlywood;
+    overflow: hidden;
+}
