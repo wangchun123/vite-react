@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import LeftLayout from "./compents/LeftLayout";
-import TopLayout from "./compents/topLayout";
+import LeftLayout from "./component/LeftLayout";
+import TopLayout from "./component/topLayout";
 import "./Layout.less";
 
 function Layout() {
