@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import {
   AppstoreOutlined,
   MailOutlined,
@@ -7,6 +7,7 @@ import {
 } from "@ant-design/icons";
 import { Menu } from "antd";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const items = [
   {
@@ -70,6 +71,10 @@ const App = () => {
   const [current, setCurrent] = useState("mail");
   const [newItems, setNewItems] = useState(items);
   const navigate = useNavigate();
+  const name = useSelector((state) => {
+    console.log('state',state)
+    return state.user.name;
+  });
 
   const onClick = (e) => {
     console.log("click ", e);
@@ -82,8 +87,7 @@ const App = () => {
     }
   };
 
-  const name = "qwer";
-  
+
   useEffect(() => {
     // 更新用户信息
     const updatedItems = items.map((item) => {
