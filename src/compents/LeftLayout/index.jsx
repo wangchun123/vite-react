@@ -14,8 +14,8 @@ import { Button, Menu } from 'antd';
 
 
 const items = [
-  { key: '1', icon: <PieChartOutlined />, label: 'Option 1' },
-  { key: '2', icon: <DesktopOutlined />, label: 'Option 2' },
+  { key: '1', icon: <PieChartOutlined />, label: 'home' },
+  { key: '2', icon: <DesktopOutlined />, label: '嵌套路由' },
   { key: '3', icon: <ContainerOutlined />, label: 'Option 3' },
   {
     key: 'sub1',
@@ -61,7 +61,7 @@ const App= () => {
       </Button> */}
       <Menu
         defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
+        defaultOpenKeys={['sub1','sub2','sub3']}
         mode="inline"
         theme="dark"
         inlineCollapsed={collapsed}
