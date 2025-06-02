@@ -29,7 +29,7 @@ const Login = () => {
       const res = await request.get("https://jsonplaceholder.typicode.com/users/1");
       // res 实际为用户对象
       if (res && (res as any).id) {
-        dispatch(login((res as any).username || username));
+        dispatch(login( username));
         navigate("/home");
       } else {
         setError("登录失败");
