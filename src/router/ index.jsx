@@ -1,17 +1,34 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+import { useRoutes } from "react-router-dom";
 
 import Layout from "../Layout";
+import TopLayout from "../compents/topLayout/index";
+
+const Text = () => {
+  return <>测试嵌套路由</>;
+};
+
+const router = [
+  {
+    path: "",
+    element: <Layout></Layout>,
+    children: [
+      {
+        path: "/home",
+        element: <Text></Text>,
+      },
+    ],
+  },
+  {
+    path: "/some",
+    element: <TopLayout></TopLayout>,
+  },
+];
 
 const PageRouter = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout />} />
-        <Route path="/home" element={<Layout />} />
-      </Routes>
-    </Router>
-  );
+  const element = useRoutes(router);
+  return <>{element}</>;
 };
 
 export default PageRouter;

@@ -1,10 +1,14 @@
-.layout{
-
+.layout {
+  display: flex;
 }
 
-.leftLayout{
-    width: 255px;
-    height: 100vh;
-    background-color: burlywood;
-    overflow: hidden;
+.leftLayout {
+  width: 255px;
+  height: 100vh;
+  background-color: burlywood;
+  overflow: hidden;
+}
+
+.topLayout {
+  width: calc(100vw - 255px);
 }
