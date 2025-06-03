@@ -1,3 +1,5 @@
+import sagaMiddleware from './sagaMiddleware';
+import rootSaga from './saga';
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 interface UserState {
@@ -31,6 +33,10 @@ const store = configureStore({
   reducer: {
     user: userSlice.reducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
 });
+
+// 启动 saga
+(sagaMiddleware as any).run && (sagaMiddleware as any).run(rootSaga);
 
 export default store;
