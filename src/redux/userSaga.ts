@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { login } from './store';
+import { login, setName } from './store';
 
 // 模拟异步登录 API
 function fakeLoginApi(username: string) {
@@ -14,7 +14,8 @@ function fakeLoginApi(username: string) {
 function* loginSaga(action: { type: string; payload: string }) {
   try {
     const username: string = yield call(fakeLoginApi, action.payload);
-    yield put(login(username)); // 派发登录成功 action
+    yield put(login()); // 只设置 isLogin
+    yield put(setName(username)); // 设置用户名
   } catch (e) {
     // 可以处理错误
   }

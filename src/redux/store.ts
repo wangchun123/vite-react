@@ -16,18 +16,20 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    login: (state, action) => {
+    login: (state) => {
       state.isLogin = true;
-      state.name = action.payload;
     },
     logout: (state) => {
       state.isLogin = false;
       state.name = "";
     },
+    setName: (state, action) => {
+      state.name = action.payload;
+    },
   },
 });
 
-export const { login, logout } = userSlice.actions;
+export const { login, logout, setName } = userSlice.actions;
 
 const store = configureStore({
   reducer: {

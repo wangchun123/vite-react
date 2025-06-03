@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../../redux/store";
 import request from "../../util/request";
 import "./index.less";
+import RadarLoading from "../../component/RadarLoading";
 
 const Login = () => {
   const [api, contextHolder] = notification.useNotification();
@@ -29,7 +30,7 @@ const Login = () => {
       const res = await request.get("https://jsonplaceholder.typicode.com/users/1");
       // res 实际为用户对象
       if (res && (res as any).id) {
-        dispatch(login( username));
+        dispatch({ type: "LOGIN_ASYNC", payload: username });
         navigate("/home");
       } else {
         setError("登录失败");
@@ -75,7 +76,7 @@ const Login = () => {
             <div style={{ color: "red", marginBottom: 12 }}>{error}</div>
           )}
           <button type="submit" style={{ width: "100%", padding: 10 }} disabled={loading}>
-            {loading ? "登录中..." : "登录"}
+            {loading ? <RadarLoading /> : "登录"}
           </button>
         </form>
       </div>
