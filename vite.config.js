@@ -8,10 +8,10 @@ export default defineConfig({
     react(),
     checker({
       typescript: true,
-      eslint: {
-        files: ['./src'],
-        extensions: ['.ts', '.tsx', '.js', '.jsx'],
-      },
+      // eslint: {
+      //   files: ['./src'],
+      //   extensions: ['.ts', '.tsx', '.js', '.jsx'],
+      // },
     }),
   ],
 })

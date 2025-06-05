@@ -8,15 +8,16 @@ import {
 import { Menu } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import type { MenuProps } from "antd";
 
-const getItems = (name: string) => [
+const getItems = (name: string): MenuProps['items'] => [
   {
     label: "Navigation One",
     key: "mail",
     icon: <MailOutlined />,
-      children: [
+    children: [
       {
-        type: "group",
+        type: "group" as const,
         label: "Item 1",
         children: [
           { label: "Option 1", key: "setting:1" },
@@ -24,7 +25,7 @@ const getItems = (name: string) => [
         ],
       },
       {
-        type: "group",
+        type: "group" as const,
         label: "Item 2",
         children: [
           { label: "Option 3", key: "setting:3" },
@@ -37,9 +38,9 @@ const getItems = (name: string) => [
     label: "Navigation Two",
     key: "app",
     icon: <AppstoreOutlined />,
-      children: [
+    children: [
       {
-        type: "group",
+        type: "group" as const,
         label: "Item 1",
         children: [
           { label: "Option 1", key: "setting:1" },
@@ -47,7 +48,7 @@ const getItems = (name: string) => [
         ],
       },
       {
-        type: "group",
+        type: "group" as const,
         label: "Item 2",
         children: [
           { label: "Option 3", key: "setting:3" },
@@ -62,7 +63,7 @@ const getItems = (name: string) => [
     icon: <SettingOutlined />,
     children: [
       {
-        type: "group",
+        type: "group" as const,
         label: "Item 1",
         children: [
           { label: "Option 1", key: "setting:1" },
@@ -70,7 +71,7 @@ const getItems = (name: string) => [
         ],
       },
       {
-        type: "group",
+        type: "group" as const,
         label: "Item 2",
         children: [
           { label: "Option 3", key: "setting:3" },
@@ -86,7 +87,7 @@ const getItems = (name: string) => [
     style: { float: "right", marginLeft: "auto" },
     children: [
       {
-        type: "group",
+        type: "group" as const,
         label: "退出登陆",
         children: [{ label: "登出", key: "getout" }],
       },
@@ -113,7 +114,7 @@ const App = () => {
       onClick={onClick}
       selectedKeys={[current]}
       mode="horizontal"
-      items={items}
+      items={items || []}
     />
   );
 };
