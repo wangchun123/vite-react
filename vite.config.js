@@ -42,7 +42,7 @@ export default defineConfig({
     sourcemap: true,
     open: true, // 启动开发服务器时自动打开浏览器
     port: 5173, // 指定端口
-    strictPort: true, // 端口被占用时直接报错
+    strictPort: false, // 端口被占用时直接报错
   },
   css: {
     preprocessorOptions: {
