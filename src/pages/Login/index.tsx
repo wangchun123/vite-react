@@ -26,10 +26,14 @@ const Login = () => {
     setError("");
     setLoading(true);
     try {
-      // 使用可成功返回的测试接口
-      const res = await request.get("https://jsonplaceholder.typicode.com/users/1");
-      // res 实际为用户对象
-      if (res && (res as any).id) {
+      // 使用幻想的登录接口
+      const res = await request.post("https://mock.presstime.cn/mock/68418e0b96dd34226fe483ad/myaApp/login", {
+        username,
+        password,
+      });
+      // 假设幻想接口返回 { success: true, user: { id, name } }
+      const data = res.data;
+      if (data && data.success && data.user && data.user.id) {
         dispatch({ type: "LOGIN_ASYNC", payload: username });
         navigate("/home");
       } else {
